@@ -1,0 +1,18 @@
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        
+        vector<vector<string>>vec;
+        map<vector<int>,vector<string>>hash;
+        for(int i=0;i<strs.size();i++){
+            vector<int>arr(26,0);
+            for(int j=0;j<strs[i].size();j++)
+                arr[strs[i][j]-'a']++;
+            
+            hash[arr].push_back(strs[i]);//using vector container as key
+        }
+        for(auto it:hash)
+            vec.push_back(it.second);
+        return vec;
+    }
+};
