@@ -17,3 +17,21 @@ public:
         return vec;
     }
 };
+
+//2nd way
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        vector<int> vec(nums.size(),1);
+        int p=1, q=1;
+        
+        for(int i=0;i<nums.size();i++){
+            vec[i]*=p;
+            p*=nums[i];
+            vec[nums.size()-(i+1)]*=q;
+            q*=nums[nums.size()-(i+1)];
+        }
+        return vec;
+        
+    }
+};
