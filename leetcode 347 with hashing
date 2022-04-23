@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+     unordered_map<int, int>hash;       
+        for(auto it:nums)
+            hash[it]++;
+        multimap<int,int>reverse;
+       for(auto it:hash)
+           reverse.insert(make_pair(it.second,it.first));
+        vector<int>vec;
+        int counter=0;
+        for(auto it=reverse.rbegin();it!=reverse.rend();it++)
+        {
+            vec.push_back(it->second);
+            counter++;
+            if(counter==k)
+                break;
+        }
+        return vec;
+                 
+
+    }
+};
